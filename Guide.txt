@@ -19,4 +19,10 @@ But before we execute our requirement.txt. We need to create a virtual environme
 - pip install -r requirement.txt
 
 GIT
+To add changes or code you have added to your project to github or main repository. First, you need to stage those changes and then commit
+ - git add . #This means, add all these changes to the staging area
+ - git commit -m "first commit. We copied the functions on anaconda to VS environment" 
+THEN Push the commit and changes to the repo
+ - git push origin main #Now push everything to main branch
 
+NOW, if you look at your github. All the changes you commit and push will be on your github to view
