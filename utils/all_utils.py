@@ -10,6 +10,14 @@ import os
 #This is where our functions will be registered to use. This py file just register helper functions
 #This function you are familiar with. It just separate your X and Y data just like you do in linear regression
 def prepare_data(df):
+  """It is use to separate the dependent variable and independent features
+
+  Args:
+      df (DataFrame): Pandas Dataset
+
+  Returns:
+      tuple: It returns the tuples of dependent and independent variables
+  """
   X = df.drop("y", axis=1)
 
   y = df["y"]
