@@ -1,5 +1,8 @@
 import numpy as np
-
+import logging
+from tqdm import tqdm #This package helps us to get output on our terminal when doing logging. So we don't necessarily need
+#To open our log for info. We can see it on the terminal
+#This package goes anywhere there is a for loop in our program
 
 class Perceptron:
   def __init__(self, eta, epochs):
@@ -7,7 +10,7 @@ class Perceptron:
     #But if you look at the note. We always need a bias w0 which make it a total of 3 weight
     #We also multiply it by 1e-4 because we want it to be very small
     self.weights = np.random.randn(3) * 1e-4 # SMALL WEIGHT INIT
-    print(f"initial weights before training: \n{self.weights}")
+    logging.info(f"initial weights before training: \n{self.weights}")
     self.eta = eta # LEARNING RATE
     self.epochs = epochs  
 
@@ -22,21 +25,21 @@ class Perceptron:
     #This jut generate an array of bias for you. The bias here is -1
     #-np.ones(len(X), 1) = [-1,-1,-1,-1]
     X_with_bias = np.c_[self.X, -np.ones((len(self.X), 1))] # CONCATINATION
-    print(f"X with bias: \n{X_with_bias}")
+    logging.info(f"X with bias: \n{X_with_bias}")
     
     #This is our training Looop
-    for epoch in range(self.epochs):
-      print("--"*10) #Don't be confuse here. This just print many dashes for you time 10. For egs: -----------------------------
-      print(f"for epoch: {epoch}")
-      print("--"*10)
+    for epoch in tqdm(range(self.epochs), total = self.epochs, desc = "Training the model"):
+      logging.info("--"*10) #Don't be confuse here. This just logging.info many dashes for you time 10. For egs: -----------------------------
+      logging.info(f"for epoch: {epoch}")
+      logging.info("--"*10)
 
       y_hat = self.activationFunction(X_with_bias, self.weights) # foward propagation
-      print(f"predicted value after forward pass: \n{y_hat}")
+      logging.info(f"predicted value after forward pass: \n{y_hat}")
       self.error = self.y - y_hat
-      print(f"error: \n{self.error}")
+      logging.info(f"error: \n{self.error}")
       self.weights = self.weights + self.eta * np.dot(X_with_bias.T, self.error) # backward propagation
-      print(f"updated weights after epoch:\n{epoch}/{self.epochs} : \n{self.weights}")
-      print("#####"*10)
+      logging.info(f"updated weights after epoch:\n{epoch}/{self.epochs} : \n{self.weights}")
+      logging.info("#####"*10)
 
 
   def predict(self, X):
@@ -45,5 +48,5 @@ class Perceptron:
 
   def total_loss(self):
     total_loss = np.sum(self.error)
-    print(f"total loss: {total_loss}")
+    logging.info(f"total loss: {total_loss}")
     return total_loss
