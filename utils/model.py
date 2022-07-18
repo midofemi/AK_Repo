@@ -1,6 +1,6 @@
 import numpy as np
 import logging
-from tqdm import tqdm #This package helps us to get output on our terminal when doing logging. So we don't necessarily need
+from tqdm import tqdm #This package helps us to get output on our terminal vis a progress bar when doing logging. So we don't necessarily need
 #To open our log for info. We can see it on the terminal
 #This package goes anywhere there is a for loop in our program
 
