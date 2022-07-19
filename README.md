@@ -1,3 +1,5 @@
+#Readme just tells you a detail about your project. Like what it is. This is why the below examples are things you can add into #readme
+
 # AK_Repo
 Perceptron_ANN
 
