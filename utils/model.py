@@ -9,7 +9,8 @@ class Perceptron:
     #This initialize the weights. We used random 3 for (w1,w2, w0). This is because we gonna be using 2 feature X1 and X2
     #But if you look at the note. We always need a bias w0 which make it a total of 3 weight
     #We also multiply it by 1e-4 because we want it to be very small
-    self.weights = np.random.randn(3) * 1e-4 # SMALL WEIGHT INIT
+    #self.weights = np.random.randn(3) * 1e-4 # SMALL WEIGHT INIT
+    self.weights = np.random.randn(5) * 1e-4 # SMALL WEIGHT INIT. TOTAL OF 5 BECAUSE INPUT VARIABLES X1, X2, X3, X4, W0
     logging.info(f"initial weights before training: \n{self.weights}")
     self.eta = eta # LEARNING RATE
     self.epochs = epochs  
@@ -18,7 +19,7 @@ class Perceptron:
   def activationFunction(self, inputs, weights):
     z = np.dot(inputs, weights) # z = W * X
     return np.where(z > 0, 1, 0) # CONDITION, IF TRUE, ELSE. If Z > 0 then Z = 1. ELSE 0
-
+    
   def fit(self, X, y):
     self.X = X
     self.y = y

@@ -48,7 +48,8 @@ def save_model(model, filename):
 def save_plot(df, file_name, model):
   def _create_base_plot(df):
     logging.info("Creating the base plot")
-    df.plot(kind="scatter", x="x1", y="x2", c="y", s=100, cmap="winter")
+    #df.plot(kind="scatter", x="x1", y="x2", c="y", s=100, cmap="winter")
+    df.plot(kind="scatter", x="X1", y="X2", c="y", s=100, cmap="winter")
     plt.axhline(y=0, color="black", linestyle="--", linewidth=1)
     plt.axvline(x=0, color="black", linestyle="--", linewidth=1)
     figure = plt.gcf() # get current figure

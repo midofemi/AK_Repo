@@ -22,15 +22,17 @@ def main(data, ETA, EPOCHS, filename, plot_filename):
     _ = model.total_loss()
 
     save_model(model, filename)
-    save_plot(df, plot_filename, model)
+    #save_plot(df, plot_filename, model)
+
 
 
 if __name__ == '__main__':
-    AND = {
-        "x1": [0,0,1,1],
-        "x2": [0,1,0,1],
-        "y": [0,0,0,1],
-    }
+    # AND = {
+    #     "x1": [0,0,1,1],
+    #     "x2": [0,1,0,1],
+    #     "y": [0,0,0,1],
+    # }
+    AND = pd.read_csv('C:/Users/midof/OneDrive/Documents/Dataset/Flowers.csv')
     try:
         logging.info(">>>>>>>> Starting training >>>>>>>")
         main(data = AND, ETA = 0.3, EPOCHS = 10, filename = 'and.model', plot_filename = "and.png")
